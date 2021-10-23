@@ -29,7 +29,7 @@ module Display
     y_pos = rover_position[1]
     direction = rover_position[2]
 
-    rows.reverse[y_pos][x_pos] = rover_icon(direction)
+    rows.reverse[y_pos.to_i][x_pos.to_i] = rover_icon(direction)
   end
 
   def rover_icon(direction)
@@ -44,5 +44,4 @@ module Display
       '<'
     end
   end
-
 end
