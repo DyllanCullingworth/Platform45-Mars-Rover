@@ -1,4 +1,8 @@
 class Tracker
+  @@plateau = []
+  @@rover1_position = []
+  @@rover2_position = []
+
   class << self
     def set_plateau(plateau)
       @@plateau = plateau.map{ |v| v + 1 }

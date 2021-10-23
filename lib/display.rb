@@ -1,12 +1,6 @@
-require 'terminal-table'
-
 module Display
-
-  def display_banner
-    
-  end
-
   def display_map
+    clear
     rows = []
 
     Tracker.plateau[0].times do |x|
@@ -16,9 +10,14 @@ module Display
     display_rover(rows, Tracker.rover1_position)
     display_rover(rows, Tracker.rover2_position)
 
-    map = Terminal::Table.new rows: rows, style: {all_separators: true}
+    map = Terminal::Table.new rows: rows, style: {all_separators: true}, title: 'Mars Rover'
     
     puts map
+    display_info
+  end
+
+  def display_info
+    puts "Rover 1: #{Tracker.rover1_position} | Rover 2: #{Tracker.rover2_position}" 
   end
 
   def display_rover(rows, rover_position)
@@ -40,5 +39,9 @@ module Display
     else
       '<'
     end
+  end
+
+  def clear
+    print "\e[2J\e[H"
   end
 end

@@ -1,16 +1,15 @@
+require 'terminal-table'
 require './lib/display.rb'
 require './lib/tracker.rb'
 
 class MarsRover
-  attr_accessor :position
-
   include Display
 
   def initialize(rover_num, rover_position, instructions)
     @directions = ['N','E','S','W']
     @rover_num = rover_num
     @position = rover_position[0..1].map { |v| v.to_i}
-    @direction = rover_position.index(rover_position[2])
+    @direction = @directions.index(rover_position[2])
     @instructions = instructions
   end
 
@@ -26,7 +25,9 @@ class MarsRover
       
       Tracker.set_rover_position(@rover_num, current_position)
       display_map
+      sleep(0.5)
     end
+    current_position
   end
 
   private

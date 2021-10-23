@@ -1,13 +1,15 @@
 module Input
   def get_input
     hash = {}
-
+    clear
     hash[:plateau] = get_plateau.split(' ').map{ |v| v.to_i }
-
+    clear
     hash[:rover1_pos] = get_rover_position(1).split(' ')
+    clear
     hash[:rover1_commands] = get_rover_commands(1)
-
+    clear
     hash[:rover2_pos] = get_rover_position(2).split(' ')
+    clear
     hash[:rover2_commands] = get_rover_commands(2)
     
     hash
