@@ -1,13 +1,16 @@
+require './lib/display.rb'
+require './lib/tracker.rb'
+
 class MarsRover
   attr_accessor :position
 
-  def initialize(x_pos, y_pos, dir, instructions)
+  include Display
+
+  def initialize(rover_num, rover_position, instructions)
     @directions = ['N','E','S','W']
-    @position = {
-      x: x_pos,
-      y: y_pos,
-      dir: @directions.index(dir)
-    }
+    @rover_num = rover_num
+    @position = rover_position[0..1].map { |v| v.to_i}
+    @direction = rover_position.index(rover_position[2])
     @instructions = instructions
   end
 
@@ -20,45 +23,45 @@ class MarsRover
       elsif command == 'M'
         move_forward
       end
+      
+      Tracker.set_rover_position(@rover_num, current_position)
+      display_map
     end
-
-    final_position
   end
 
-  def final_position
-    "#{@position[:x]} #{@position[:y]} #{@directions[@position[:dir]]}"
+  private
+  
+  def current_position
+    [@position[0], @position[1], @directions[@direction]]
   end
 
   def rotate_left
-    current_position = @position[:dir]
-    if current_position == 0
-      @position[:dir] = 3
+    if @direction == 0
+      @direction = 3
     else
-      @position[:dir] -= 1  
+      @direction -= 1  
     end
   end
 
   def rotate_right
-    current_position = @position[:dir]
-    if current_position == 3
-      @position[:dir] = 0
+    if @direction == 3
+      @direction = 0
     else
-      @position[:dir] += 1  
+      @direction += 1  
     end
   end
 
-
   def move_forward
-    direction = @directions[@position[:dir]]
+    direction = @directions[@direction]
     case direction
     when 'N'
-      @position[:y] += 1
+      @position[1] += 1
     when 'E'
-      @position[:x] += 1
+      @position[0] += 1
     when 'S'
-      @position[:y] -= 1
+      @position[1] -= 1
     else
-      @position[:x] -= 1
+      @position[0] -= 1
     end
   end
 end

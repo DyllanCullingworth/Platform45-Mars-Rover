@@ -1,10 +1,8 @@
-require './lib/mars_rover.rb'
 require './lib/input.rb'
-require './lib/display.rb'
+require './lib/mars_rover.rb'
+require './lib/tracker.rb'
 
 include Input
-include Display
-
 # input = get_input
 
 input = {
@@ -15,9 +13,15 @@ input = {
   rover2_commands: 'MMRMMRMRRM'
 }
 
-display_map(input[:plateau], input[:rover1_pos], input[:rover2_pos])
+Tracker.set_plateau(input[:plateau])
+Tracker.set_rover_position(1, input[:rover1_pos])
+Tracker.set_rover_position(2, input[:rover2_pos])
 
-# mars_rover1 = MarsRover.new(0, 0, 'N', 'LLMM')
+mars_rover1 = MarsRover.new(1, input[:rover1_pos], input[:rover1_commands])
+mars_rover2 = MarsRover.new(2, input[:rover2_pos], input[:rover2_commands])
 
-# mars_rover1.move_rover
-# p mars_rover1.position
+mars_rover1.move_rover
+mars_rover2.move_rover
+
+p Tracker.rover1_position
+p Tracker.rover2_position

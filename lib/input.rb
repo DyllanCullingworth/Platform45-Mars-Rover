@@ -7,8 +7,6 @@ module Input
     hash[:rover1_pos] = get_rover_position(1).split(' ')
     hash[:rover1_commands] = get_rover_commands(1)
 
-    p hash
-
     hash[:rover2_pos] = get_rover_position(2).split(' ')
     hash[:rover2_commands] = get_rover_commands(2)
     

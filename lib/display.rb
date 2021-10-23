@@ -6,21 +6,18 @@ module Display
     
   end
 
-  def display_map(plateau, rover1_position, rover2_position)
-    plateau = plateau.map{ |v| v + 1 }
-
+  def display_map
     rows = []
 
-    plateau[0].times do |x|
-      rows << Array.new(plateau[1], ' ')
+    Tracker.plateau[0].times do |x|
+      rows << Array.new(Tracker.plateau[1], ' ')
     end
 
-    display_rover(rows, rover1_position)
-    display_rover(rows, rover2_position)
+    display_rover(rows, Tracker.rover1_position)
+    display_rover(rows, Tracker.rover2_position)
 
     map = Terminal::Table.new rows: rows, style: {all_separators: true}
     
-
     puts map
   end
 
