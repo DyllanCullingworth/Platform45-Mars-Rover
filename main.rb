@@ -7,15 +7,15 @@ require './lib/mars_rover.rb'
 include Input
 include Display
 
-# input = get_input
+input = get_input
 
-input = {
-  plateau: [5, 5],
-  rover1_pos: ['1', '2', 'N'],
-  rover1_commands: 'LMLMLMLMM',
-  rover2_pos: ['3', '3', 'E'],
-  rover2_commands: 'MMRMMRMRRM'
-}
+# input = {
+#   plateau: [5, 5],
+#   rover1_pos: ['1', '2', 'N'],
+#   rover1_commands: 'LMLMLMLMM',
+#   rover2_pos: ['3', '3', 'E'],
+#   rover2_commands: 'MMRMMRMRRM'
+# }
 
 Tracker.set_plateau(input[:plateau])
 Tracker.set_rover_position(1, input[:rover1_pos])
