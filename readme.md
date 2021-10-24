@@ -19,6 +19,12 @@ Built using Ruby in a Repl and Ruby 2.5.0
 bundle install
 ```
 
+#### To run code:
+```bigquery
+ruby main.rb
+```
+
+
 #### From Repl:
 ```bigquery
 -- https://replit.com/@DandelionZA/Platform45-Mars-Rover
@@ -28,7 +34,7 @@ Just push the run button
 ### Tests
 Tests are written in RSpec
 
-To run tests
+#### To run tests
 ```bigquery
 bundle exec rspec
 ```
