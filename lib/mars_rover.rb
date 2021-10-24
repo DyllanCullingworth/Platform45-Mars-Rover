@@ -15,25 +15,32 @@ class MarsRover
 
   def move_rover
     @instructions.chomp.split('').each do |command|
-      if command == 'L'
-        rotate_left
-      elsif command == 'R'
-        rotate_right
-      elsif command == 'M'
-        move_forward
-      end
-      
+     
+      follow_command(command)
+
       Tracker.set_rover_position(@rover_num, current_position)
+
       display_map
       sleep(0.5)
     end
+    
     current_position
   end
 
   private
-  
+
   def current_position
     [@position[0], @position[1], @directions[@direction]]
+  end
+
+  def follow_command(command)
+    if command == 'L'
+      rotate_left
+    elsif command == 'R'
+      rotate_right
+    elsif command == 'M'
+      move_forward
+    end
   end
 
   def rotate_left

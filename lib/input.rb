@@ -1,15 +1,11 @@
 module Input
   def get_input
     hash = {}
-    clear
+ 
     hash[:plateau] = get_plateau.split(' ').map{ |v| v.to_i }
-    clear
     hash[:rover1_pos] = get_rover_position(1).split(' ')
-    clear
     hash[:rover1_commands] = get_rover_commands(1)
-    clear
     hash[:rover2_pos] = get_rover_position(2).split(' ')
-    clear
     hash[:rover2_commands] = get_rover_commands(2)
     
     hash
@@ -19,11 +15,13 @@ module Input
     plateau = prompt(
       "Input the plateau co-ordinates, seperated by a space eg: 3 6"
       )
+
     verify_plateau(plateau)
+    clear
   end 
 
   def verify_plateau(plateau)
-    if plateau.match /^[0-9]\s[0-9]$/
+    if plateau.match /^[0-9]+\s[0-9]+$/
       return plateau
     else
       puts "Invalid input"
@@ -37,7 +35,9 @@ module Input
       \nx_pos y_pos Direction
       \nValid directions are N E S W"
       )
+
     verify_position(position, rover_num)
+    clear
   end
 
   def verify_position(position, rover_num)
@@ -56,7 +56,9 @@ module Input
       \nR: Rotate Right
       \nM: Move Forward One Space"
       )
+
     verify_rover_commands(rover_commands, rover_num)
+    clear
   end
 
   def verify_rover_commands(commands, rover_num)

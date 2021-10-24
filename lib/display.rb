@@ -31,13 +31,13 @@ module Display
   def rover_icon(direction)
     case direction 
     when 'N'
-      '^'
+      '⬆'
     when 'E'
-      '>'
+      '➡'
     when 'S'
-      '_'
+      '⬇'
     else
-      '<'
+      '⬅'
     end
   end
 
